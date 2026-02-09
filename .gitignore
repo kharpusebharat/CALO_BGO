@@ -1,5 +1,20 @@
+# Build directories
 build/
 build2/
+
+# ROOT output
 *.root
+
+# Object and shared libs
 *.o
 *.so
+
+# CMake files
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+Makefile
+
+# OS/editor
+.DS_Store
+*~

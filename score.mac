@@ -1,0 +1,27 @@
+/run/numberOfThreads 9
+# Scoring mesh for Bragg peak (energy deposit vs depth)
+/run/initialize
+
+# Create a box mesh covering the full crystal volume
+/score/create/boxMesh bgoMesh
+/score/mesh/boxSize 2.8 2.8 24 cm
+/score/mesh/translate/xyz 0 0 12 cm
+
+# One bin in X/Y, many bins in Z (1 mm bins)
+/score/mesh/nBin 1 1 24000
+
+# Score energy deposition per bin
+/score/quantity/energyDeposit edep
+/score/close
+
+# Example beam settings (override as needed)
+#/gun/particle proton
+/gun/particle ion
+/gun/ion 6 12
+/gun/energy 1200 MeV
+
+/run/beamOn 50000
+
+
+# Dump Z-profile to file
+#/score/dumpQuantityToFile bgoMesh edep edep_z
